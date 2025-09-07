@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import fitz  # PyMuPDF
 import docx
+import os
 from matcher import match_resumes
 
 app = Flask(__name__)
@@ -46,5 +47,8 @@ def match():
 
     return render_template("results.html", results=results)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
