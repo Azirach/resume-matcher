@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Matching Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="hero">
+    <h1>📊 Comparative Results</h1>
+    <p class="subtitle">Overall fit by resume. Click a bar to jump to that resume’s card.</p>
+  </div>
+
+  <!-- Comparative Chart -->
+  <div class="chart-container">
+    <canvas id="comparisonChart"></canvas>
+  </div>
+
+  <!-- Resume Cards -->
+  <div class="container">
+    {% for res in results %}
+    <div class="card" id="resume-{{ loop.index }}">
+      <h3>📄 {{ res.name }}</h3>
+      <div class="score-bar">
+        <div class="score-fill" style="width: {{ res.score }}%">{{ res.score }}%</div>
+      </div>
+
+      <p><strong>BM25 (keyword) :</strong> {{ res.bm25 }}</p>
+      <p><strong>Semantic (MiniLM):</strong> {{ res.dense }}</p>
+
+      <p><span class="matched">✅ Matched Skills:</span>
+        {{ res.skills | join(", ") if res.skills else "None" }}
+      </p>
+      <p><span class="missing">❌ Missing Skills:</span>
+        {{ res.missing | join(", ") if res.missing else "None" }}
+      </p>
+    </div>
+    {% endfor %}
+
+    <div class="text-center" style="margin: 16px 0 32px;">
+      <a href="/" class="btn back-btn">⬅ Back</a>
+    </div>
+  </div>
+
+  <script>
+    const labels = {{ results | map(attribute='name') | list | safe }};
+    const scores = {{ results | map(attribute='score') | list | safe }};
+
+    const ctx = document.getElementById('comparisonChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Fit Score (%)',
+          data: scores,
+          borderWidth: 2,
+          backgroundColor: 'rgba(46, 204, 113, 0.7)',
+          borderColor: 'rgba(39, 174, 96, 1)',
+          borderRadius: 8,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false }},
+        scales: { y: { beginAtZero: true, max: 100 }},
+        onClick: (evt, els) => {
+          if (els.length) {
+            const idx = els[0].index + 1;
+            document.getElementById('resume-' + idx).scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

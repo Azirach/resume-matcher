@@ -1,0 +1,134 @@
+/* Base */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin: 40px auto 20px;
+  padding: 0 16px;
+}
+.hero h1 {
+  font-size: 34px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 8px;
+}
+.subtitle {
+  color: #556;
+  margin: 0;
+}
+
+/* Form Card */
+.form-card {
+  max-width: 720px;
+  margin: 20px auto 40px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  padding: 24px;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin: 14px 0 6px;
+}
+textarea, input[type="text"], input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.2s;
+}
+textarea:focus, input[type="text"]:focus, input[type="file"]:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+.btn-submit, .back-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 16px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff512f, #dd2476);
+  transition: transform .15s ease;
+  text-align: center;
+}
+.btn-submit:hover, .back-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Chart Card */
+.chart-container {
+  max-width: 900px;
+  margin: 0 auto 26px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  padding: 18px;
+}
+
+/* Results container + cards */
+.container {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #e8ecf1;
+  border-radius: 14px;
+  padding: 18px 18px 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+.card h3 {
+  margin: 0 0 8px;
+}
+
+/* Score bar */
+.score-bar {
+  height: 22px;
+  background: #eef2f6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0 14px;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: right;
+  padding-right: 8px;
+  line-height: 22px;
+}
+
+/* Skill text colors */
+.matched { color: #27ae60; font-weight: 600; }
+.missing { color: #e74c3c; font-weight: 600; }
+
+/* Back button (on results page) */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #e9eef6;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: .15s;
+}
+.btn:hover { transform: translateY(-2px); }

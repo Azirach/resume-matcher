@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Resume ↔ JD Matcher</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="hero">
+    <h1>🤖 AI Resume ↔ Job Description Matcher</h1>
+    <p class="subtitle">Upload multiple resumes, paste a JD, and get smart ranking.</p>
+  </div>
+
+  <div class="form-card">
+    <form action="/match" method="post" enctype="multipart/form-data">
+      <label>📝 Job Description</label>
+      <textarea name="job_description" rows="6" placeholder="Paste the job description..." required></textarea>
+
+      <label>✅ Required Skills (comma-separated)</label>
+      <input type="text" name="skills" placeholder="Python, Flask, SQL, Docker, AWS" required />
+
+      <label>📂 Upload Resumes (.pdf / .docx)</label>
+      <input type="file" name="resumes" multiple accept=".pdf,.docx" required />
+
+      <button type="submit" class="btn-submit">🚀 Match Now</button>
+    </form>
+  </div>
+</body>
+</html>
